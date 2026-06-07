@@ -1,0 +1,6 @@
+{
+  "name": "Nayam Restaurante",
+  "description": "Bilingual website for Nayam Restaurante in Poblenou, Barcelona, featuring a dark botanical luxury aesthetic, online reservations, bilingual language toggle, and interactive menu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

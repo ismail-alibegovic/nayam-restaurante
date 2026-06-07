@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@1,300;1,400;1,600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bg-deep: var(--bg-deep);
+  --color-bg-section: var(--bg-section);
+  --color-bg-mid: var(--bg-mid);
+  --color-green-dark: var(--green-dark);
+  --color-green-mid: var(--green-mid);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-cream: var(--cream);
+  --color-muted: var(--muted);
+  --color-terracotta: var(--terracotta);
+  
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-script: "Cormorant Garamond", Georgia, serif;
+
+  --animate-fade-in-up: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+:root {
+  /* Dark Botanical Theme (Default) */
+  --bg-deep: #0f0f0d;
+  --bg-section: #141410;
+  --bg-mid: #1a1a16;
+  --green-dark: #1a2e1a;
+  --green-mid: #243324;
+  --gold: #c8a96e;
+  --gold-light: #e2c07a;
+  --cream: #f5f0e8;
+  --muted: #8a8578;
+  --terracotta: #b5603a;
+}
+
+:root[data-theme='light'] {
+  /* Light Greenhouse Theme (High Contrast) */
+  --bg-deep: #fbfdf9;
+  --bg-section: #f2f6ee;
+  --bg-mid: #e3ebd9;
+  --green-dark: #213c21;
+  --green-mid: #cedfc5;
+  --gold: #947134;
+  --gold-light: #a67f3a;
+  --cream: #121611;
+  --muted: #5f6b5b;
+  --terracotta: #af4f24;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-deep);
+  color: var(--cream);
+  font-family: var(--font-sans);
+}
+
+/* Elegant, high-performance fluid transition on theme toggle click */
+html, body, section, footer, header, div, p, span, h1, h2, h3, h4, h5, h6, a, button, input, select, textarea, svg {
+  transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
+              color 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              fill 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              stroke 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom noise overlay */
+.noise-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.035;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom scrollbar styling in dark botanical luxury */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--green-dark);
+  border: 1px solid var(--bg-mid);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* Sepia map filter */
+.map-dark-sepia {
+  filter: grayscale(30%) sepia(20%) contrast(90%) invert(0%);
+}
+
+/* Pulse animation for active dot markers */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}
+.pulse-light {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* CSS-optimized botanical pulse animation targeting transform and opacity to prevent layout shifts */
+@keyframes botanical-pulse {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 0.25;
+    transform: scale(1.05) translate3d(0, 0, 0);
+  }
+}
+
+@media (min-width: 768px) {
+  @keyframes botanical-pulse {
+    0%, 100% {
+      opacity: 0.25;
+      transform: scale(1) translate3d(0, 0, 0);
+    }
+    50% {
+      opacity: 0.35;
+      transform: scale(1.05) translate3d(0, 0, 0);
+    }
+  }
+}
+
+.botanical-optimized {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  animation: botanical-pulse 8s infinite ease-in-out;
+}
+
+/* Animated entrance for reservation success state with optimized will-change */
+@keyframes reward-entrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translate3d(0, 4px, 0);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02) translate3d(0, -1px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+.success-reward-card {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  animation: reward-entrance 0.65s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* Success Icon pop and spiral spring-back */
+@keyframes icon-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) rotate(-15deg);
+  }
+  70% {
+    transform: scale(1.15) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+.success-icon-reward {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  animation: icon-pop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+}
+
+/* Exquisite slow rotation for sun icons and botanical vibes */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
